@@ -349,4 +349,169 @@ Select winner, sum(wins) from
 (Select winner, count(winner) wins from ipl group by winner)a group by wins
 
 
-Select * from ipl
+
+
+
+
+--- Select statement
+--- ALTER, add , drop, modify
+-- alter command is used to alter the data set, if we ant to add, delete, drop, modify any row column or row it is used in that
+
+alter table ipl 
+add email int
+
+alter table ipl 
+modify email float
+
+alter table ipl
+drop column email
+
+-- Truncate
+-- command deletes the data inside the table but not the table itself
+-- command: 
+truncate table categories
+
+-- Insert
+-- update
+-- delete
+-- create
+
+-- Offset
+OFFSET and FETCH Clause are used in conjunction with SELECT and ORDER BY clause to provide a means to retrieve a range of records.
+The OFFSET argument is used to identify the starting point to return rows from a result set. Basically, it exclude the first set of records.
+-- ex: select name, year of the player where medal is gold order by year but year should not include 2004
+
+
+Select city, venue, result_margin from ipl order by result_margin offset 2 rows
+
+--fetch
+The FETCH argument is used to return a set of number of rows. FETCH can’t be used itself, it is used in conjunction with OFFSET.
+
+Select city, venue, result_margin from ipl order by result_margin offset 2 rows
+fetch next 89
+rows only
+
+
+-- INTERSECT
+The INTERSECT operator in SQL is used to retrieve the records that are identical/common between the result sets of two or more tables.
+
+
+-- EXCEPT
+If we perform the EXCEPT operator on the above two tables to retrieve the names,
+it will display the distinct records only from the first table which are not in common with the records of the second table.
+
+-- JOINS
+-- INNER
+-- OUTER
+-- FULL
+-- UNION
+
+
+-- Date functions
+-- getdate()
+-- DATEPART() function
+-- provides, day, month and year for the datepart of the particular date
+
+Select datepart(day,'2022-01-23') Day_of_the_date
+--- provides the particualr day number
+
+Select datepart(week,'2022-01-23') week_of_the_date
+--- provides the particualr week number
+
+Select datepart(month,'2022-01-23') month_of_the_date
+--- provides the particualr month number
+
+Select datepart(year,'2022-01-23') year_of_the_date
+--- provides the particualr week number
+
+--DATEADD()
+-- Adds day, month, year in the given date
+Select DATEADD(day,2,'2022-01-23') added_date
+
+-- Adds day, month, year in the given date
+Select DATEADD(month,2,'2022-01-23') added_month
+
+-- Adds day, month, year in the given date
+Select DATEADD(year,2,'2022-01-23') added_year
+
+---datediff()
+-- difference between dates
+
+day difference between 2 dates
+Select DATEDIFF(day,'2022-01-01','2022-01-23') diff_day
+
+week difference between 2 dates
+Select DATEDIFF(week,'2022-01-01','2022-01-23') diff_week
+
+
+---Scaler functions
+-- returns a single value from an input single value
+
+--UCASE/upper
+--LCASE/lower
+--MID/substring : extract substring from col values of string type in a table
+--LENGTH/len
+--ROUND : rounds till the nearest decimal point
+--NOW/getdate
+--FORMAT : used to format how col has to be used 
+--NCHAR
+--LTRIM
+--PI
+--LOG10
+--Nullif
+--Isnumberic
+--STR
+--EXP
+--SIGN
+--ATAN
+--ASIN
+
+
+-- ex:
+Select Upper(city) from ipl
+
+Select Lower(city) from ipl
+
+Select substring(city,2,3) from ipl
+
+
+Select Len(city) from ipl
+
+--Conversion functions 
+--- convert from one data type to another 
+--CAST : converts a value (of any type) into the specified data type
+
+Select cast(result_margin as decimal) result_margin from ipl
+
+--CONVERT: This function converts value into the specified datatype or characterset
+Select convert(result_margin, int) from ipl
+
+
+--STR_TO_DATE
+
+Select STR_TO_DATE ('08th 06 2023', %D %m %Y) as new_date
+
+
+--DATE_FORMAT
+
+-- VIEWS
+ virtual table - result set of stored query
+ -- views can be created from different tables 
+ --kind of views
+ --read only view
+ --materialised view
+
+
+ create 
+
+
+-- rest in notes
+
+
+
+
+ 
+
+
+
+
